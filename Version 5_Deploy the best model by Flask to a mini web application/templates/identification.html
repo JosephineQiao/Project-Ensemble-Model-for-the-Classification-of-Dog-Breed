@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap 4 css link   -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static',filename='/favicon.ico') }}"/>
+    <title>Dog Breed Identification System</title>
+</head>
+<body>
+
+<div id="wrapper">
+    <!-- Navbar -->
+<!--<nav class=" fixed-top navbar navbar-expand-sm navbar-dark text-white bor"  id="main-nav" style="height: 60px; border-bottom:2px solid gray; background-color: #ffacf9;">-->
+<nav class=" fixed-top navbar navbar-expand-sm navbar-dark bg-dark text-white bor"  id="main-nav" style="height: 60px; border-bottom:2px solid gray;">
+    <div class="container text-white m-0" style="max-width: 2200px;">
+<!--        <a class="navbar-brand ml-5 cursor-none text-uppercase " href="javascript:void(0)" style="color: #ffacf9;">-->
+        <a class="navbar-brand ml-5 cursor-none text-uppercase text-light" href="/">
+            <i class="fas fa-paw fa-lg t " style="margin-right: 10px;"></i>
+            Dog Breed Identification System
+        </a>
+<!--        <button class="navbar-toggler" data-toggle="collapse" data-target="#NNN">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div id="NNN" class="collapse navbar-collapse">-->
+<!--            <ul class="navbar-nav  w-75   " style="text-align:center ;margin: 0px auto;">-->
+<!--                <li class="nav-item col bg-dark text-white" style="border-left: 1px solid gray !important;"><a class=" nav-link" href="#upload-section">-->
+<!--                    <i class="fas fa-th mr-2 "></i>-->
+<!--                    Demo</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+    </div>
+</nav>
+
+<!--    <nav class="navbar navbar-dark bg-primary">-->
+<!--      <div class="container">-->
+<!--               <a class="navbar-brand ml-5 cursor-none" href="javascript:void(0)">-->
+<!--            <i class="fas fa-paw fa-lg t " style="margin-right: 10px;"></i>-->
+<!--            MENU-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </nav>-->
+
+<!-- Upload section -->
+
+<section id="upload-section"  class="bg-dark" style="margin-top: 0px;">
+    <div style="height: 60px;">
+    </div>
+<div id="upload-img">
+    <div id="overlay">
+        <div class="row m-0"  >
+            <div id="base" class="col-lg-6 col-xs-12"style="min-height: 565px; ">
+                <div id="whiteAreaUpld" class="card bg-white border-dark" style="margin-top:30px; width: 100%; height: 448px; opacity: 0.9;">
+                    <div class="card-header bg-dark text-white d-flex justify-content-center  ">
+                        <i class="fas fa-cloud-upload-alt fa-lg mr-2 " style="margin-top: 4px;"></i>
+                                UPLOAD BOX
+                    </div>
+                    <div class="card-body " style="border-color: gray;">
+                                <div class="card-title">
+                                    <!-- title -->
+                                </div>
+                                <p id="gryTxt" class="card-text bg-dark text-white d-flex justify-content-center  align-items-center"
+                                    style="height: 280px;border-width:1px ;border-style: solid; ">
+
+                                    <img id="ranImg" class="d-none" src="" alt=""  data-toggle="tooltip" data-placement="top" title=""  style="width: 100%; height: 100%;">
+                                    <span id="textinImage" class="">
+                                        <strong style="font-size:x-large;">DOG IMAGE</strong>
+                                    </span>
+                                </p>
+                                <div class=" justify-content-center row" >
+                                    <button data-toggle="tooltip" data-placement="bottom" title="Pick Random Dog Image"  id="randomImage" class="col btn btn-outline-success ml-3"  >
+                                      <i id="ranButtonIcn" class="fas fa-dog fa-lg  "  ></i>
+
+                                        Select random</button>
+                                    <button   id="cancelUpload" class=" d-none col btn btn-outline-danger ml-3"  >
+                                      <i  id="cancelUploadIcn" class="fas fa-ban fa-lg  "  ></i>
+                                        Cancel upload
+                                    </button>
+                                    <div id="upload_button"  class="col " style="display: inline-block;" >
+                                        <form id="form_upld" method="post" enctype="multipart/form-data">
+                                            <label class="m-0 w-100">
+                                            <input id="upld" name="file" type="file" accept=" .jpg,.jpeg, .png"   onclick="this.value=null;" style="display: none;">
+                                            <span  id="spanUpld" data-toggle="tooltip" data-placement="bottom" title="Upload Only Dog Image"  class="btn btn btn-outline-info btn-block"  ><i id="upldIcn" class="fas fa-upload fa-lg mr-1"></i> <span id="spanUpldInner"> Upload image </span></span>
+                                            </label>
+                                       </form>
+                                    </div>
+                                </div>
+                                <a id="run"   class="btn btn-primary  d-flex  justify-content-center align-items-center disabled"  style="margin-top:40px;width:100%;
+                                 border-color: #eee; height: 50px; border-radius: 10px;color: white;
+                                " >
+                                    <i id="runLogo" class="fas fa-arrow-alt-circle-right fa-lg mr-2 "></i>
+                                    RUN (Get The Breed)
+                                </a>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-xs-8 offset-xs-2  d-lg-block col-lg-5 offset-lg-1    px-2 my-3" id="resBox" style="text-align: center;
+               align-self: center;
+                " >
+
+                <div id="   " class=" mb-0 border border-white px-2 " style="min-height: 20px; opacity:1;border-top-left-radius: 10px;
+                border-top-right-radius: 10px; color: white; font-size:large;vertical-align: middle; background-color: #222;">
+                    <p id="paragUpRes" class="mb-0 px-4 pt-1" style="line-height:20px ; display:flex;">
+                        <div style="text-align: center;">
+                        <div class="row mt-2">
+                            <div class="col-2">
+                                <i  id="resLogo" class="fas fa-poll fa-3x ml-2 mt-0" style="color:white;vertical-align: middle;"></i>
+                            </div>
+                            <div class="col-9 py-0" >
+                                <p class="d-inline text-justify " style="font-size: 15px;" id="paragTop">
+                                    <span style="font-size: larger;"> Predicting the breed from 120 different breeds </span>
+                                    <br>
+                                    <a href="https://www.kaggle.com/competitions/dog-breed-identification/data">The dataset link</a>
+
+                                    <br>
+                                    <i class="fas fa-star yel" style="color:#9AB;"></i>
+                                    <span class="yel" style="font-size: small;color:#9AB;">
+                                    ( Accuracy ~ 90.2 % )
+                                    </span>
+                                    <i class="fas fa-star yel" style="color:#9AB;"></i>
+
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </p>
+                </div>
+                </div>
+                <div id="largeRes" class=" p-1 " style="opacity: 0.9;background-color: #eef;" >
+                <canvas id="qer"   class="bg-dark  px-2 pr-4"  > </canvas>
+                </div>
+                <div  id="mobileRes" class=" p-1   table-responsive" style="opacity: 0.9;background-color: #eef;" >
+                    <table class="table m-0 p-0 col-12" style="text-align: left;     border-collapse: separate;">
+                        <thead style="background-color: darkcyan;">
+                            <tr >
+                                <th style="font-size: larger;" >  <i class="fas fa-th-list mr-2 fa-lg" style="vertical-align: middle check-double;"></i>
+                                Breeds </th>
+                                <th style="font-size: larger ; width: 31%;"  >
+                                Probability </th>
+                            </tr>
+                        </thead>
+                        <tbody style="background-color: #11aed1;">
+                            <tr id="firstOp">
+                                <th id="fistChoice">
+                                 <i class="fas fa-check-double mr-2 fa-lg"></i>First Prediction
+                                </th>
+                                <td id="fistProb">
+                                   <b>90.00000 %</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th id="secondChoice">
+                                <i class="fas fa-check mr-2 fa-lg"></i>Second Prediction
+                                </th>
+                                <td id="secondProb">
+                                    <b>8.00000 %</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th >
+                                <i class="fas fa-check mr-2 fa-lg"></i>Other 148 Breeds <small> </br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(sum of probabilities) </b></small>
+                                </th>
+                                <td id="thirdProb">
+                                    <b>2.00000 %</b>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class=" text-white pt-4 pb-1" style="background-color: #222; border: 1px solid white; border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+                    <div class="container mb-3" id="best">
+                        <i   class="fas fa-trophy fa-lg mr-2" style="color: yellow;"></i>
+                        <p style="display: inline; font-size: larger; color: yellow;" id="boxRes">The Best Prediction</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+</div>
+
+<!-- chart modal -->
+<div class="modal fade"  id="Modaltest">
+    <div  class="modal-dialog  ">
+        <div  class="modal-content " >
+            <div class="model-body  bg-dark " style="text-align: center;">
+                <div>
+                    <canvas id="ac5"> </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer section -->
+<footer class="py-2 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Ensemble model - Josephine Chengdu University of
+        Technology Sino-British Collaborations - 2023</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script  src="https://code.jquery.com/jquery-3.5.1.min.js"   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="   crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+ <script src="{{ url_for('static',filename='test.js') }}"></script>
+
+
+
+</body>
+</html>
